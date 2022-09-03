@@ -12,6 +12,8 @@ The Blog app will be a classic example of a blog website. You will create a full
 ## Getting Started
 
 - In this project, you will use migration files to build your schema.
+- Set up models. To start with, we have tables for Users, Posts, Comments, and Likes, which means we need a model for each one. You've already set the foreign key in the table schema but be sure to write it here too!
+- In this project, you will add validations to your models and create specs for them.
 
 ## Instalation
 - Clone repository.
