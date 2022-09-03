@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_02_184554) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_03_034935) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -18,8 +18,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_02_184554) do
     t.integer "AuthorId"
     t.integer "PostId"
     t.text "Text"
-    t.date "UpdatedAt"
-    t.date "CreatedAt"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -27,8 +25,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_02_184554) do
   create_table "likes", force: :cascade do |t|
     t.integer "AuthorId"
     t.integer "PostId"
-    t.date "CreatedAt"
-    t.date "UpdatedAt"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -37,8 +33,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_02_184554) do
     t.integer "AuthorId"
     t.string "Title"
     t.text "Text"
-    t.date "CreatedAt"
-    t.date "UpdatedAt"
     t.integer "CommentsCounter"
     t.integer "LikesCounter"
     t.datetime "created_at", null: false
@@ -49,8 +43,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_02_184554) do
     t.string "Name"
     t.string "Photo"
     t.text "Bio"
-    t.date "UpdatedAt"
-    t.date "CreatedAt"
     t.integer "PostCounter"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
