@@ -1,7 +1,7 @@
 class Post < ApplicationRecord
-  belongs_to :user
-  has_many :comments, foreign_key: 'posts_id'
-  has_many :likes, foreign_key: 'posts_id'
+  belongs_to :AuthorId, class_name: 'User'
+  has_many :comments, foreign_key: 'PostId'
+  has_many :likes, foreign_key: 'PostId'
 
   def most_recent_comments
     comments.limit(5).order('created_at desc')
@@ -12,6 +12,6 @@ class Post < ApplicationRecord
   private
 
   def update_counter
-    user.increment!(:PostCounter)
+    AuthorId.increment!(:PostCounter)
   end
 end
