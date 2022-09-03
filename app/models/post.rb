@@ -3,7 +3,7 @@ class Post < ApplicationRecord
   has_many :comments, foreign_key: 'PostId'
   has_many :likes, foreign_key: 'PostId'
 
-  validates :Title, presense: true
+  validates :Title, presence: true
   validates :Title, length: { maximum: 250 }
   validates :CommentsCounter, numericality: { only_integer: true }
   validates :CommentsCounter, comparison: { greater_than_or_equal_to: 0 }
