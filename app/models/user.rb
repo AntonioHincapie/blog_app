@@ -1,7 +1,7 @@
 class User < ApplicationRecord
-  has_many :posts, foreign_key: 'AuthorId'
-  has_many :likes, foreign_key: 'AuthorId'
-  has_many :comments, foreign_key: 'AuthorId'
+  has_many :posts
+  has_many :likes
+  has_many :comments
 
   validates :Name, presence: true
   validates :PostCounter, numericality: { only_integer: true }, comparison: { greater_than_or_equal_to: 0 }

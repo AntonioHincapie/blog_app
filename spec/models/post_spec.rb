@@ -1,8 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe Post, type: :model do
-  post = Post.create(Title: 'Title', Text: 'Text')
+  first_user = User.create(Name: 'Tom', Photo: 'https://unsplash.com/photos/F_-0BxGuVvo', Bio: 'Teacher from Mexico.')
+  post = Post.create(author: first_user, Title: 'Title', Text: 'Text')
 
+  before { first_user.save }
   before { post.save }
 
   it 'Title shold be present' do
