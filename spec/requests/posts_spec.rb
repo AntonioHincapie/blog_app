@@ -21,7 +21,7 @@ RSpec.describe 'Posts', type: :request do
 
   describe 'GET user page #show' do
     before(:each) do
-      get '/users/6/posts/5'
+      get '/users/6/posts/2'
     end
 
     it 'Response status was correct' do
