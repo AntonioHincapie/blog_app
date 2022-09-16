@@ -1,39 +1,39 @@
 require 'rails_helper'
 
-RSpec.describe 'Posts', type: :request do
+RSpec.describe 'Users', type: :request do
   describe 'Get page post #index' do
     before(:each) do
-      get '/users/5/posts'
+      get '/users/64/posts'
     end
 
-    it 'Response status was correct' do
+    it 'is a success' do
       expect(response).to have_http_status(:ok)
     end
 
-    it 'Correct template was rendered' do
+    it 'renders the correct template' do
       expect(response).to render_template('index')
     end
 
-    it 'The response body includes correct placeholder text' do
-      expect(response.body).to include 'List'
+    it 'renders and get the placeholder text' do
+      expect(response.body).to include 'Here'
     end
   end
 
   describe 'GET user page #show' do
     before(:each) do
-      get '/users/6/posts/2'
+      get '/users/64/posts/90'
     end
 
-    it 'Response status was correct' do
+    it 'is a success' do
       expect(response).to have_http_status(:ok)
     end
 
-    it 'Correct template was rendered' do
+    it 'renders the correct template' do
       expect(response).to render_template('show')
     end
 
-    it 'The response body includes correct placeholder text' do
-      expect(response.body).to include 'Post'
+    it 'renders and get the placeholder text' do
+      expect(response.body).to include 'Here'
     end
   end
 end
