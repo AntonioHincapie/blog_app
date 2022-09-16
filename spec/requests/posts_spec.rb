@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe 'Users', type: :request do
   describe 'Get page post #index' do
     before(:each) do
-      get '/users/64/posts'
+      get '/users/1/posts'
     end
 
     it 'is a success' do
@@ -21,7 +21,7 @@ RSpec.describe 'Users', type: :request do
 
   describe 'GET user page #show' do
     before(:each) do
-      get '/users/64/posts/90'
+      get '/users/1/posts/2'
     end
 
     it 'is a success' do

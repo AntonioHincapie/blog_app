@@ -1,1 +1,12 @@
-<h1> Here will display one specific post </h1>
+<div class="solo-post">
+  <div class="header-solo-post">
+    <h2>Post #<%=@post.id%> <%=@post.author.name%> </h2>
+    <p> Comments: <%=@post.comments_counter%> Likes: <%=@post.likes_counter%></p>
+  </div>
+  <p><%=@post.text%></p>
+  <%@comments.each do |comment|%>
+    <div class="comments-post">
+      <p><%=comment.author.name%>: <%= comment.text %></p>
+    </div>
+  <%end%>
+</div>

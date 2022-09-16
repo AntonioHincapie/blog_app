@@ -1,1 +1,31 @@
-<h1>Here will display all posts per user</h1>
+<div class="user-card">
+  <div class="photo">
+    <img class="user-photo" src=<%=@user.photo%>>
+  </div>
+  <div class="user-info">
+    <%= link_to user_path(@user.id) do%>
+      <h2 class="name"><%= @user.name %></h2>
+    <% end %>
+    <p class="post-numbers"> Number of post: <%= @user.post_counter %> </p> 
+  </div>
+</div>
+<div class="user-last-posts">
+  <%@posts.each_with_index do |post, idx|%>
+    <div class="user-post">
+      <%= link_to user_post_path(post.author.id, post.id) do%>
+        <h4>Post # <%= idx + 1 %></h4>
+      <%end%>
+      <p><%=post.text%></p>
+      <p class="counters"> Comments: <%=post.comments_counter%> Likes: <%=post.likes_counter%>
+    </div>
+    <%post.most_recent_comments.each do |comment|%>
+      <div class="comments-post">
+        <p> <%=comment.author.name%>: <%=comment.text%>
+      </div>
+    <%end%>
+  <%end%>
+</div>
+<div class="button-container">
+
+  <button>Pagination</button>
+</div>

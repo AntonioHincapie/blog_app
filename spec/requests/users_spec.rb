@@ -21,7 +21,7 @@ RSpec.describe 'Users', type: :request do
 
   describe 'GET user page #show' do
     before(:each) do
-      get '/users/20'
+      get '/users/1'
     end
 
     it 'is a success' do
