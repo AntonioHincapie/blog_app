@@ -1,3 +1,9 @@
 <section>
+  <%= render partial: "shared/flash"%>
   <%= render partial: "shared/user", collection: @users %>
+  <div class="button-container">
+    <%=link_to new_post_path, class: "see-posts" do%>
+      Create new post
+    <%end%>
+  </div>
 </section>
