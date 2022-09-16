@@ -18,7 +18,7 @@ class PostsController < ApplicationController
     @post = Post.new(author: current_user, title: values[:title], text: values[:text])
 
     if @post.save
-      redirect_to users_path, notice: "Post has been published"
+      redirect_to users_path, notice: 'Post has been published'
     else
       render :new
     end
