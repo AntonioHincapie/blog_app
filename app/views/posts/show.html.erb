@@ -9,4 +9,13 @@
       <p><%=comment.author.name%>: <%= comment.text %></p>
     </div>
   <%end%>
+  <div class="button-container-flex">
+    <%=link_to new_user_post_comment_path(@post.author.id, @post.id), class: "add-post" do%>
+      Add new comment
+    <%end%>
+    <br>
+    <%=form_with url: user_post_likes_path(@post.author, @post) do |form|%>
+      <%= form.submit "❤️ Like", class: "like-btn" %>
+    <%end%>
+  </div>
 </div>
