@@ -1,1 +1,31 @@
-<h1>User Information</h1>
+<section>
+  <div class="user-card">
+    <div class="photo">
+      <img class="user-photo" src=<%=@user.photo%>>
+    </div>
+    <div class="user-info">
+      <%= link_to user_path(@user.id) do%>
+        <h2 class="name"><%= @user.name %></h2>
+      <% end %>
+      <p class="post-numbers"> Number of post: <%= @user.post_counter %> </p> 
+    </div>
+  </div>
+
+  <div class="bio">
+    <h4> Bio: </h4>
+    <p><%= @user.bio %>
+  </div>
+  <div class="user-last-posts">
+    <%@user.recent_posts.each_with_index do |post, idx|%>
+      <div class="user-post">
+        <h4>Post # <%= idx + 1 %></h4>
+        <p><%=post.text%></p>
+      </div>
+    <%end%>
+  </div>
+  <div class="button-container">
+    <%= link_to user_posts_path(@user.id), class: "see-posts" do%>
+    See all posts
+    <%end%>
+  </div>
+<section>

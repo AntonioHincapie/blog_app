@@ -1,51 +1,24 @@
-# Blog App
+# README
 
-The Blog app will be a classic example of a blog website. You will create a fully functional website that will show the list of posts and empower readers to interact with them by adding comments and liking posts.
+This README would normally document whatever steps are necessary to get the
+application up and running.
 
-## Built With
+Things you may want to cover:
 
-- Visual Studio Code and GitHub.
-- Ruby on Rails.
-- Linters for RoR.
-- Gitflow.
+* Ruby version
 
-## Getting Started
+* System dependencies
 
-- In this project, you will use migration files to build your schema.
-- Set up models. To start with, we have tables for Users, Posts, Comments, and Likes, which means we need a model for each one. You've already set the foreign key in the table schema but be sure to write it here too!
-- In this project, you will add validations to your models and create specs for them.
+* Configuration
 
-## Instalation
-- Clone repository.
+* Database creation
 
-- bundle install.
+* Database initialization
 
-- rails server
+* How to run the test suite
 
-## Author
+* Services (job queues, cache servers, search engines, etc.)
 
-## 👤 **Marco Antonio Hincapié Montes**
+* Deployment instructions
 
-- GitHub: [@AntonioHincapie](https://github.com/AntonioHincapie)
-
-- Twitter: [@MarcoHincapie](https://twitter.com/MarcoHincapie)
-
-- LinkedIn: [LinkedIn](https://www.linkedin.com/in/marco-hincapi%C3%A9-7a76751a3/)
-
-## 🤝 Contributing
-
-Contributions, issues, and feature requests are welcome!
-
-Feel free to check the [issues page](../../issues/).
-
-## Show your support
-
-Give a ⭐️ if you like this project!
-
-## Acknowledgments
-
-- [curriculum-rails](https://github.com/microverseinc/curriculum-rails/blob/main/blog-app/sneak_peek_v1_1.md) from Microverse
-
-## 📝 License
-
-This project is [MIT](./LICENSE) licensed.
+* ...

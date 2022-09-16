@@ -6,16 +6,16 @@ RSpec.describe 'Users', type: :request do
       get '/users'
     end
 
-    it 'Response status was correct' do
+    it 'is a success' do
       expect(response).to have_http_status(:ok)
     end
 
-    it 'Correct template was rendered' do
+    it 'renders the correct template' do
       expect(response).to render_template('index')
     end
 
-    it 'The response body includes correct placeholder text' do
-      expect(response.body).to include 'List'
+    it 'renders and get the placeholder text' do
+      expect(response.body).to include 'Here'
     end
   end
 
@@ -24,16 +24,16 @@ RSpec.describe 'Users', type: :request do
       get '/users/1'
     end
 
-    it 'Response status was correct' do
+    it 'is a success' do
       expect(response).to have_http_status(:ok)
     end
 
-    it 'Correct template was rendered' do
+    it 'renders the correct template' do
       expect(response).to render_template('show')
     end
 
-    it 'The response body includes correct placeholder text' do
-      expect(response.body).to include 'User'
+    it 'renders and get the placeholder text' do
+      expect(response.body).to include 'Here'
     end
   end
 end
