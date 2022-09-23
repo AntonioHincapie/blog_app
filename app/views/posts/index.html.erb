@@ -1,37 +1,51 @@
-<div class="user-card">
-  <div class="photo">
-    <img class="user-photo" src=<%=@user.photo%>>
+<h1 class="hidden">Here is the list of posts for user XX!</h1>
+<% flash.each do |type, msg| %>
+  <div>
+    <%= msg if type=="success" %>
   </div>
-  <div class="user-info">
-    <%= link_to user_path(@user.id) do%>
-      <h2 class="name"><%= @user.name %></h2>
-    <% end %>
-    <p class="post-numbers"> Number of post: <%= @user.post_counter %> </p> 
-  </div>
-</div>
-<div class="user-last-posts">
-  <%@posts.each_with_index do |post, idx|%>
-    <div class="user-post">
-      <%= link_to user_post_path(post.author.id, post.id) do%>
-        <h4><%=post.title%></h4>
-      <%end%>
-      <p><%=post.text%></p>
-      <p class="counters"> Comments: <%=post.comments_counter%> Likes: <%=post.likes_counter%>
+<% end %>
+<div class="oneuser">
+  <% userphoto = @user.photo.nil? ? "no_photo.png" : @user.photo %>
+  <div class="photo"><%= image_tag("#{ userphoto }", size: "129") %></div>
+  <div class="userandposts">      
+    <div class="username"><%= @user.name %></div>
+    <div class="postscounter">
+      <% if @user == @current_user %>
+        <%= link_to 'New Post', new_post_path %><br>
+      <% end %>
+      Number of posts: <%= @user.post_counter %>
     </div>
-    <%post.most_recent_comments.each do |comment|%>
-      <div class="comments-post">
-        <p> <%=comment.author.name%>: <%=comment.text%>
-      </div>
-    <%end%>
-  <%end%>
+  </div>
 </div>
-<div class="buttons-container">
-  <div class="button-container">
-    <button class="see-posts">Pagination</button>
+<div class="allposts">
+  <% @posts.includes([:comments]).each do |post| %>
+    <div class="onepost">
+      <div class="titlepost">
+        <p><%= link_to "#{ post.title }", "/users/#{ @user.id }/posts/#{ post.id }" %></p>
+        <p><%= post.text.truncate(170) %></p>
+      </div>
+      <div class="commentslikes">
+        <%= link_to 'New Comment', "/users/#{ @user.id }/posts/#{ post.id }/new_comment" %>
+         / <%= button_to 'Like', "/users/#{ @user.id }/posts/#{ post.id }/like", { class: "buttonlink" } %><br>
+        Comments: <%= post.comments_counter %>, 
+        Likes: <%= post.likes_counter %>
+      </div>
+    </div>
+    <% if post.comments != [] %>
+      <div class="comments">
+        <% post.last_5_comments.each do |comment| %>
+            <%= User.find(comment.author_id).name %>: <%= comment.text %><br>
+        <% end %>
+      </div>
+    <% end %>
+  <% end %>
+</div>
+<div class="button-wrapper">
+  <div class="button-link">
+    <%= link_to "Pagination", "/" %>
   </div>
-  <div class="button-container">
-    <%= link_to user_path(@user.id), class: "see-posts" do%>
-    Back
-    <%end%>
-  </div>
+</div>
+<div class="mylinks">
+  <div><%= button_to "Home", root_path, method: :get %></div>
+  <div><%= button_to "Logout", destroy_user_session_path, method: :delete, data: { turbo: false } %></div>
 </div>

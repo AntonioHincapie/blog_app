@@ -1,16 +1,28 @@
 class CommentsController < ApplicationController
+  before_action :authenticate_user!
+
   def new
-    @comment = Comment.new
+    comment = Comment.new
+    respond_to do |format|
+      format.html { render :new, locals: { comment: } }
+    end
   end
 
   def create
-    values = params.require(:comment).permit(:text)
-    @comment = Comment.new(text: values[:text], author_id: current_user.id, post_id: params[:post_id])
-
-    if @comment.save
-      redirect_to user_post_path(params[:user_id], params[:post_id]), notice: 'Comment has been published'
-    else
-      render :new
+    comment = Comment.new(params.require(:comment).permit(:text))
+    comment.author_id = current_user.id
+    comment.post_id = params[:id]
+    post = Post.find_by_id(params[:id])
+    respond_to do |format|
+      format.html do
+        if comment.save
+          flash[:success] = 'Comment created successfully'
+          redirect_to "/users/#{post.author_id}/posts"
+        else
+          flash.now[:error] = 'Error: Comment could not be saved'
+          render :new, locals: { comment: }, status: 422
+        end
+      end
     end
   end
 end
