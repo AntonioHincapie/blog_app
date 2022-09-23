@@ -17,7 +17,8 @@ RSpec.describe 'Users', type: :request do
 
   describe 'GET user page #show' do
     before(:all) do
-      @user = User.create(name: 'Antonio', photo: 'https://unsplash.com/photos/F_-0BxGuVvo', bio: 'Teacher from Colombia')
+      @user = User.create(name: 'Antonio', photo: 'https://unsplash.com/photos/F_-0BxGuVvo',
+                          bio: 'Teacher from Colombia')
       get "/users/#{@user.id}"
     end
 

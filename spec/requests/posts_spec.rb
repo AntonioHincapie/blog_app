@@ -3,7 +3,8 @@ require 'rails_helper'
 RSpec.describe 'Users', type: :request do
   describe 'Get page post #index' do
     before(:all) do
-      @user = User.create(name: 'Antonio', photo: 'https://unsplash.com/photos/F_-0BxGuVvo', bio: 'Teacher from Colombia')
+      @user = User.create(name: 'Antonio', photo: 'https://unsplash.com/photos/F_-0BxGuVvo',
+                          bio: 'Teacher from Colombia')
       @post = Post.create(author: @user, title: 'My Post', text: 'This post')
       get "/users/#{@user.id}/posts"
     end
@@ -19,7 +20,8 @@ RSpec.describe 'Users', type: :request do
 
   describe 'GET user page #show' do
     before(:all) do
-      @user = User.create(name: 'Antonio', photo: 'https://unsplash.com/photos/F_-0BxGuVvo', bio: 'Teacher from Colombia')
+      @user = User.create(name: 'Antonio', photo: 'https://unsplash.com/photos/F_-0BxGuVvo',
+                          bio: 'Teacher from Colombia')
       @post = Post.create(author: @user, title: 'My Post', text: 'This post')
       get "/users/#{@user.id}/posts/#{@post.id}"
     end
