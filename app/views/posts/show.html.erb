@@ -10,10 +10,14 @@
     </div>
   <%end%>
   <div class="button-container-flex">
-    <%=link_to new_user_post_comment_path(@post.author.id, @post.id), class: "add-post" do%>
+    <%=link_to new_user_post_comment_path(@post.author.id, @post.id), class: "see-posts" do%>
       Add new comment
     <%end%>
-    <br>
+    <div class="button-container">
+      <%= link_to user_posts_path, class: "see-posts" do%>
+      Back
+      <%end%>
+    </div>
     <%=form_with url: user_post_likes_path(@post.author, @post) do |form|%>
       <%= form.submit "❤️ Like", class: "like-btn" %>
     <%end%>

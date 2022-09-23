@@ -25,7 +25,13 @@
     <%end%>
   <%end%>
 </div>
-<div class="button-container">
-
-  <button>Pagination</button>
+<div class="buttons-container">
+  <div class="button-container">
+    <button class="see-posts">Pagination</button>
+  </div>
+  <div class="button-container">
+    <%= link_to user_path(@user.id), class: "see-posts" do%>
+    Back
+    <%end%>
+  </div>
 </div>
