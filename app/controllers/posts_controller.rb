@@ -18,7 +18,7 @@ class PostsController < ApplicationController
       format.html { render :new, locals: { post: } }
     end
   end
-  
+
   def create
     post = Post.new(params.require(:post).permit(:title, :text))
     post.comments_counter = 0
