@@ -1,9 +1,14 @@
-<section>
-  <%= render partial: "shared/flash"%>
-  <%= render partial: "shared/user", collection: @users %>
-  <div class="button-container">
-    <%=link_to new_post_path, class: "see-posts" do%>
-      Create new post
-    <%end%>
+<h1 class="hidden">Here is a list of users of this page!</h1>
+<% @users.each do |user| %>
+  <div class="oneuser">
+    <% userphoto = user.photo.nil? ? "no_photo.png" : user.photo %>
+    <div class="photo"><%= image_tag("#{ userphoto }", size: "129") %></div>
+    <div class="userandposts">     
+      <div class="username"><%= link_to "#{ user.name }", "/users/#{ user.id }" %></div>
+      <div class="postscounter">Number of posts: <%= user.post_counter %></div>
+    </div>
   </div>
-</section>
+<% end %>
+<div class="mylinks">
+  <div><%= button_to "Logout", destroy_user_session_path, method: :delete, data: { turbo: false } %></div>
+</div>
