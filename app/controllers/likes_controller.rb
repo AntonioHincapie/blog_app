@@ -1,6 +1,4 @@
 class LikesController < ApplicationController
-  before_action :authenticate_user!
-
   def create
     likes_author = Like.where(author_id: current_user.id)
     likes_post = Like.where(post_id: params[:id])
