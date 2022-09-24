@@ -12,7 +12,7 @@ class LikesController < ApplicationController
     like = Like.new
     like.author_id = current_user.id
     like.post_id = params[:id]
-    
+
     respond_to do |format|
       format.html do
         like.save
