@@ -20,4 +20,12 @@ Rails.application.routes.draw do
 
   post '/users/:user_id/posts/:id/destroy', to: 'posts#destroy', as: 'delete_post'
   post '/users/:user_id/:id/destroy', to: 'comments#destroy', as: 'delete_comment'
+
+  namespace :api do
+    resources :users do
+      resources :posts do
+        resources :comments
+      end
+    end
+  end
 end
