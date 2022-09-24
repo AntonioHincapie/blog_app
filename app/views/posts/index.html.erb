@@ -33,7 +33,7 @@
     </div>
     <% if post.comments != [] %>
       <div class="comments">
-        <% post.last_5_comments.each do |comment| %>
+        <% post.most_recent_comments.each do |comment| %>
             <%= User.find(comment.author_id).name %>: <%= comment.text %><br>
         <% end %>
       </div>
