@@ -36,4 +36,11 @@ class PostsController < ApplicationController
       end
     end
   end
+  
+  def destroy
+    @post = Post.find(params[:id])
+    authorize! :destroy, @post
+    @post.destroy
+    redirect_to(request.referer)
+  end
 end
