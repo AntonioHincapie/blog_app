@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
   get "/users", to: "users#index", as: "users"
   get "/users/:id", to: "users#show", as: "user"
+  get "/users/:id/api_token", to: "users#api_token", as: "api_token_user"
 
   get '/posts/new', to: 'posts#new', as: 'new_post'
   post '/posts', to: 'posts#create', as: 'post'
@@ -19,4 +20,12 @@ Rails.application.routes.draw do
 
   post '/users/:user_id/posts/:id/destroy', to: 'posts#destroy', as: 'delete_post'
   post '/users/:user_id/:id/destroy', to: 'comments#destroy', as: 'delete_comment'
+
+  namespace :api do
+    resources :users do
+      resources :posts do
+        resources :comments
+      end
+    end
+  end
 end
